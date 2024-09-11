@@ -1,0 +1,22 @@
+NAMA Tim :es teh
+
+anggota :
+ALVIN . LO / 221110546
+
+Nama aplikasi : Footwear Haven 
+
+topik/tema dari aplikasi:toko sepatu
+
+deskripsi aplikasi:
+Aplikasi web yang dibuat dengan nama "Footwear Haven" memiliki fokus pada industri sepatu atau alas kaki. Dengan struktur kode yang diberikan, dapat disimpulkan bahwa aplikasi ini mungkin berperan sebagai toko sepatu online. Pengguna dapat menjelajahi berbagai produk sepatu, melihat detail produk, dan bahkan melakukan pembelian secara online. Aplikasi ini menyediakan informasi rinci tentang setiap produk, termasuk deskripsi, gambar, dan harga produk. Pengguna juga dapat menggunakan navigasi dan menu kategori untuk menemukan jenis sepatu yang mereka cari, seperti sepatu pria, sepatu wanita, atau sepatu anak-anak.
+
+
+Daftar fitur:
+-fitur search : fitur ini digunakan untuk mencari nama produk yang diinginkan
+-fitur section : pada bagian produk terdapat navigasi pria wanita dan anak-anak jika ditekan maka dia akan menuju section yang kita inginkan
+-fitur scrollToUP button: dimana fitur ini terdapat jika kita melakukan scrolling kebawah maka tombol ini akan muncul dibagian bawah kanan jika ditekan maka dia akan menuju halaman teratas
+-fitur keranjang : dalam fitur ini anda dapat menyimpan produk anda didalam keranjang dengan menekan tombol add to cart
+-fitur penghapusan produk dalam keranjang:
+anda dapat menghapus produk yang anda tidak jadi beli dengan menekan tombol hapus pada keranjang
+-fitur login,register,logout: anda dapat melakukan login , registrasi , dan juga logout 
+
