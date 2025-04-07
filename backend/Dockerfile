@@ -1,9 +1,9 @@
 FROM node:18
-WORKDIR /workspace  # Ini akan jadi /workspace di container
+WORKDIR /workspace 
 
 # Copy semua file
 COPY package*.json ./
-COPY . .            # Ini akan copy semua folder (controller, routes, dll)
+COPY . .           
 
 RUN npm install
-CMD ["node", "routes/index.js"]  # Sesuaikan dengan entrypoint Anda
+CMD ["node", "routes/index.js"]  
