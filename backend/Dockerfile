@@ -1,7 +1,9 @@
-FROM node:18-alpine
-WORKDIR /app
-COPY package*.json .
+FROM node:18
+WORKDIR /workspace  # Ini akan jadi /workspace di container
+
+# Copy semua file
+COPY package*.json ./
+COPY . .            # Ini akan copy semua folder (controller, routes, dll)
+
 RUN npm install
-COPY . .
-EXPOSE 8001  # Harus sama dengan PORT environment
-CMD ["node", "server.js"]  # Pastikan ini menjalankan file utama
+CMD ["node", "routes/index.js"]  # Sesuaikan dengan entrypoint Anda
