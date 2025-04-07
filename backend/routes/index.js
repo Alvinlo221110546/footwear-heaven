@@ -1,5 +1,5 @@
 import  express  from "express";
-import { getUsers,Register,Login,Logout } from "../controller/Users.js";
+import { getUsers,Register,Login,Logout } from "../controller/users.js";
 import { refreshToken } from "../controller/RefershToken.js";
 import { VerifyToken } from "../middleware/VerifyToken.js";
 import * as AnakController from '../controller/AnakController.js';
