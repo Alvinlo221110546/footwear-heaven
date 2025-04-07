@@ -1,0 +1,20 @@
+steps:
+  # Build image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/subtle-proxy-454413-p0/backend-footwear:$COMMIT_SHA', '.']
+
+  # Push image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/subtle-proxy-454413-p0/backend-footwear:$COMMIT_SHA']
+
+  # Deploy ke Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: 
+      - 'run'
+      - 'deploy'
+      - 'backend-footwear'
+      - '--image=gcr.io/subtle-proxy-454413-p0/backend-footwear:$COMMIT_SHA'
+      - '--region=asia-southeast2'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
