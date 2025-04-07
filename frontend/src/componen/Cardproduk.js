@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
+import React from 'react';
 
 function Cardproduk(props) {
   return (

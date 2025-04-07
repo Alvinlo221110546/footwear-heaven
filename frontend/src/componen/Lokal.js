@@ -1,4 +1,4 @@
-import {React,useEffect,useState} from 'react';
+import React,{useEffect,useState} from 'react';
 import { Carousel, Card, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -30,7 +30,7 @@ function Lokal() {
     const slideProducts = products.slice(startIndex, endIndex);
 
     const carouselItem = (
-      <Carousel.Item key={i} className='my-4'>
+      <Carousel.Item key={i} className='my-4 px-4'>
         <Row >
           {slideProducts.map((product) => (
             <Col key={product.id}>

@@ -28,7 +28,7 @@ function Terbaru() {
     const slideProducts = products.slice(startIndex, endIndex);
 
     const carouselItem = (
-      <Carousel.Item key={i} className='my-4'>
+      <Carousel.Item key={i} className='my-4 px-4'>
         <Row>
           {slideProducts.map((product) => (
             <Col key={product.id}>

@@ -40,7 +40,7 @@ function Register() {
         <div className="container">
           <div className='colums is-centered'>
             <div className="colum is-4-desktop">
-              <form onSubmit={Register} className='box'>
+              <form onSubmit={Register} className='box border'>
                 <h1>Register</h1>
                 <div className='field'>
                   <label className="label">Name</label>
@@ -73,10 +73,10 @@ function Register() {
                     <input type="text" className="input" placeholder='phone' value={phone} onChange={(e) => setPhone(e.target.value)} />
                   </div>
                 </div>
-                <div className='field mt-4'>
-                  <label>
+                <div className='field d-flex align-items-center mt-4'>
+                  <label className='d-flex align-items-center mb-0'>
                     <input type="checkbox" name="agree" required />
-                    Saya setuju dengan syarat dan ketentuan
+                    <p className='px-1 mb-0'>Saya setuju dengan syarat dan ketentuan</p>
                   </label>
                 </div>
                 <div className='field mt-5'>

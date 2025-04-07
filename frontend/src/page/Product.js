@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Container, Nav } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import ScrollToTopButton from '../componen/ScrollToTopButton';
-import { Card, Button, Modal } from 'react-bootstrap';
+import { Card, Button, Modal, Spinner } from 'react-bootstrap';
 import axios from "axios"
 import Form from 'react-bootstrap/Form';
 import Keranjang from './Keranjang';
-import { FaShoppingBag } from 'react-icons/fa';
-
-
+import { FaShoppingBag, FaWhatsapp, FaTimes } from 'react-icons/fa';
+import Swal from 'sweetalert2';
 
 
 function Product() {
@@ -24,11 +23,10 @@ function Product() {
     const [showKeranjang, setShowKeranjang] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [showModal, setShowModal] = useState(false);
-    const [isPaymentProcessed, setIsPaymentProcessed] = useState(false);
+    const [isPaymentProcessed] = useState(false);
     const [priaData, setPriaData] = useState([]);
     const [wanitaData, setWanitaData] = useState([]);
     const [anakData, setAnakData] = useState([]);
-
 
 
     const handleSearchChange = (event) => {
@@ -65,12 +63,26 @@ function Product() {
 
             setCartItems(response.data);
 
-            console.log('Cart items after update:', response.data);
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Produk ditambahkan ke keranjang!',
+                showConfirmButton: false,
+                timer: 1500,
+                toast: true,
+                background: '#28a745',
+                color: 'white'
+            });
+
         } catch (error) {
             console.error('Error adding item to cart:', error.message, error.config);
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal',
+                text: 'Gagal menambahkan produk ke keranjang!',
+            });
         }
     };
-
     const fetchData = async () => {
         try {
             const responsePria = await axios.get('http://localhost:3020/api/Pria');
@@ -124,13 +136,13 @@ function Product() {
         setShowModal(false);
     };
 
-    const handlePayment = () => {
-        setIsPaymentProcessed(true);
-        setTimeout(() => {
-            setIsPaymentProcessed(false);
-            setShowModal(false);
-        }, 1500);
-    };
+    // const handlePayment = () => {
+    //     setIsPaymentProcessed(true);
+    //     setTimeout(() => {
+    //         setIsPaymentProcessed(false);
+    //         setShowModal(false);
+    //     }, 1500);
+    // };
 
 
     return (
@@ -258,15 +270,15 @@ function Product() {
                                         <Card.Title>{product.title}</Card.Title>
                                         <Card.Text>{product.pricedescription}</Card.Text>
                                         <div className='d-flex'>
-                                        {isLoggedIn ? (
-                                            <>
-                                                <Button style={{ margin: '5px' }} variant="dark" onClick={() => handleBuyNow(product)}>Buy Now</Button>
-                                                <Button style={{ margin: '5px' }} variant="success" onClick={() => handleAddToCart(product)}>Add to Cart</Button>
-                                            </>
-                                        ) : (
-                                            <p>Login untuk menambahkan ke keranjang atau beli sekarang.</p>
-                                        )}
-                                    </div>
+                                            {isLoggedIn ? (
+                                                <>
+                                                    <Button style={{ margin: '5px' }} variant="dark" onClick={() => handleBuyNow(product)}>Buy Now</Button>
+                                                    <Button style={{ margin: '5px' }} variant="success" onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+                                                </>
+                                            ) : (
+                                                <p>Login untuk menambahkan ke keranjang atau beli sekarang.</p>
+                                            )}
+                                        </div>
                                     </Card.Body>
                                 </Card>
                             ))}
@@ -274,27 +286,77 @@ function Product() {
                     </Container>
                 </section>
             </Row>
-            <Modal show={showModal} onHide={handleCloseModal}>
-                <Modal.Header >
-                    <Modal.Title>{selectedProduct?.title}</Modal.Title>
+            <Modal
+                show={showModal}
+                onHide={handleCloseModal}
+                size="md"
+                centered
+                backdrop="static"
+                className="product-modal"
+            >
+                <Modal.Header className="border-0 pb-0 mb-3">
+                    <Modal.Title className="w-100 text-center">
+                        <h4 className="mb-0 fw-bold">{selectedProduct?.title}</h4>
+                    </Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                    <Card.Img src={selectedProduct?.image} />
-                    <p>{selectedProduct?.description}</p>
-                    <p>{selectedProduct?.pricedescription}</p>
+
+                <Modal.Body className="pt-0 px-4">
+                    <Card className="border shadow-sm">
+                        <Card.Img
+                            variant="top"
+                            src={selectedProduct?.image}
+                            className="p-3"
+                            style={{
+                                maxHeight: '300px',
+                                objectFit: 'contain',
+                            }}
+                        />
+                        <Card.Body className="text-center pt-0">
+                            <div className="d-flex justify-content-between align-items-center border-top pt-3">
+                                <h5 className="mb-0 text-muted">Harga:</h5>
+                                <h4 className="mb-0 text-primary fw-bold">
+                                    {selectedProduct?.pricedescription}
+                                </h4>
+                            </div>
+                        </Card.Body>
+                    </Card>
                 </Modal.Body>
-                <Modal.Footer>
-                    {!isPaymentProcessed && (
-                        <>
-                            <Button variant="secondary" onClick={handleCloseModal}>
+
+                <Modal.Footer className="border-0 justify-content-center">
+                    {!isPaymentProcessed ? (
+                        <div className="d-flex gap-3 w-100">
+                            <Button
+                                variant="outline-secondary"
+                                onClick={handleCloseModal}
+                                className="d-flex align-items-center justify-content-center"
+                                style={{ flex: 1 }}
+                            >
+                                <FaTimes className="me-2" />
                                 Tutup
                             </Button>
-                            <Button variant="primary" onClick={handlePayment}>
-                                Bayar
+                            <Button
+                                variant="success"
+                                onClick={() => {
+                                    const productName = selectedProduct?.title || "Produk";
+                                    const productPrice = selectedProduct?.pricedescription || "Harga";
+                                    const whatsappMessage = `Halo, saya ingin memesan:\n\n*${productName}*\nHarga: ${productPrice}\n\nApakah masih tersedia?`;
+                                    window.open(`https://wa.me/6281396961133?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+                                    handleCloseModal();
+                                }}
+                                className="d-flex align-items-center justify-content-center whatsapp-btn"
+                                style={{ flex: 1 }}
+                            >
+                                <FaWhatsapp className="me-2" />
+                                Beli Sekarang
                             </Button>
-                        </>
+
+                        </div>
+                    ) : (
+                        <div className="text-center py-2 w-100">
+                            <Spinner animation="border" variant="success" className="me-2" />
+                            <span>Mengarahkan ke WhatsApp...</span>
+                        </div>
                     )}
-                    {isPaymentProcessed && <p>Pembayaran diproses...</p>}
                 </Modal.Footer>
             </Modal>
             <ScrollToTopButton />

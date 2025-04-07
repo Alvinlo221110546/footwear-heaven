@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import hero1 from './../aset/hero.jpeg'
 import hero2 from './../aset/hero (2).jpeg'

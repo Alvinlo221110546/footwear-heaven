@@ -14,7 +14,7 @@ function About() {
         <>
             <Image src={Gambar} className='w-100 ' style={{ maxHeight: '650px' }} />
             <Container>
-                <Row className="mb-4">
+                <Row className="mb-4 mt-5">
                     <Col><h1>Dipimpin oleh Andrew dan Mark O'Keefe bersaudara, kami adalah seorang
                         Boutique dari komunitas brand agency dimana kamu dapat memperoleh kreativitas secara lansung</h1>
                     </Col>
@@ -28,15 +28,15 @@ function About() {
                     <h1>Pendiri</h1>
                     <Col sm>
                         <Image src={Pencipta} roundedCircle style={{ width: '300px', height: '300px' }} />
-                        <p>Sejak kecil, Andrew sudah tertarik pada dunia seni dan desain. Ia sering memperhatikan detail-detail kecil pada sepatu yang ia pakai dan merenungkan bagaimana ia bisa menciptakan karya yang serupa atau bahkan lebih baik. Setelah lulus dari Universitas Seni Jakarta dengan gelar sarjana dalam desain produk, Rizky memulai karirnya sebagai pembuat sepatu junior di salah satu perusahaan terkemuka di Jakarta.</p>
+                        <p className='mt-4'>Sejak kecil, Andrew sudah tertarik pada dunia seni dan desain. Ia sering memperhatikan detail-detail kecil pada sepatu yang ia pakai dan merenungkan bagaimana ia bisa menciptakan karya yang serupa atau bahkan lebih baik. Setelah lulus dari Universitas Seni Jakarta dengan gelar sarjana dalam desain produk, Rizky memulai karirnya sebagai pembuat sepatu junior di salah satu perusahaan terkemuka di Jakarta.</p>
                     </Col>
                     <Col sm>
                         <Image src={Pencipta2} roundedCircle style={{ width: '300px', height: '300px' }} />
-                        <p>Mark O'Keefe adalah seorang pembuat sepatu berbakat dengan lebih dari 10 tahun pengalaman di industri ini. Ia memiliki keahlian dalam merancang, mengukir, dan merakit sepatu dengan presisi tinggi. Rizky memiliki hasrat yang besar dalam menciptakan sepatu berkualitas tinggi dan modis untuk memenuhi kebutuhan dan preferensi klien. Ia selalu berusaha untuk menggabungkan kreativitas dengan keahliannya dalam menciptakan sepatu yang unik</p>
+                        <p className='mt-4'>Mark O'Keefe adalah seorang pembuat sepatu berbakat dengan lebih dari 10 tahun pengalaman di industri ini. Ia memiliki keahlian dalam merancang, mengukir, dan merakit sepatu dengan presisi tinggi. Rizky memiliki hasrat yang besar dalam menciptakan sepatu berkualitas tinggi dan modis untuk memenuhi kebutuhan dan preferensi klien. Ia selalu berusaha untuk menggabungkan kreativitas dengan keahliannya dalam menciptakan sepatu yang unik</p>
                     </Col>
                     <Col sm>
                         <Image src={Pencipta3} roundedCircle style={{ width: '300px', height: '300px' }} />
-                        <p>Di sebuah kota metropolitan yang sibuk, ada seorang seniman sepatu bernama Brian Steward. Rizky telah lama menyimpan hasrat yang mendalam untuk menciptakan sepatu yang tidak hanya indah secara visual, tetapi juga nyaman untuk dipakai. Dengan lebih dari 10 tahun pengalaman di industri pembuatan sepatu, ia telah mencapai tingkat keahlian yang luar biasa.</p>
+                        <p className='mt-4'>Di sebuah kota metropolitan yang sibuk, ada seorang seniman sepatu bernama Brian Steward. Rizky telah lama menyimpan hasrat yang mendalam untuk menciptakan sepatu yang tidak hanya indah secara visual, tetapi juga nyaman untuk dipakai. Dengan lebih dari 10 tahun pengalaman di industri pembuatan sepatu, ia telah mencapai tingkat keahlian yang luar biasa.</p>
                     </Col>
                 </Row>
             </Container>
@@ -60,7 +60,7 @@ function About() {
                 <Row>
                     <Col>
                         <h3>Nilai-nilai Kami</h3>
-                        <ul>
+                        <ul style={{ listStyleType: "disc", paddingLeft: "20px" }}>
                             <li>Kualitas: Kami berdedikasi untuk menyediakan produk berkualitas tertinggi, yang dirancang dengan presisi dan perhatian terhadap detail.</li>
                             <li>Inovasi: Kami merangkul inovasi dan berupaya menciptakan solusi terdepan yang dapat mengantisipasi dan memenuhi kebutuhan yang berkembang dari pelanggan kami.</li>
                             <li>Kepuasan Pelanggan: Kami memberikan prioritas pada kepuasan pelanggan dan berkomitmen untuk memberikan layanan dan dukungan yang luar biasa selama perjalanan mereka dengan kami.</li>

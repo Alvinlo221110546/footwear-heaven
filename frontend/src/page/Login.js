@@ -20,13 +20,13 @@ function Login() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ 'email' : email, password })
+      body: JSON.stringify({ 'email': email, password })
     });
 
     if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem('user', JSON.stringify(data));
-        navigate('/home');
+      const data = await response.json();
+      localStorage.setItem('user', JSON.stringify(data));
+      navigate('/home');
     } else {
       setErrorMessage('Wrong email or password');
     }
@@ -38,7 +38,7 @@ function Login() {
         <div className="container">
           <div className='colums is-centered'>
             <div className="colum is-4-desktop">
-              <form onSubmit={Auth} className='box'>
+              <form onSubmit={Auth} className='box border'>
                 <h1 className='is-center'>Login</h1>
                 <div className='field mt-4'>
                   <label className="label">Email or Username</label>
@@ -53,10 +53,10 @@ function Login() {
                   </div>
                 </div>
                 <p className='has-text-centered has-text-danger'>{errorMessage}</p>
-                <div className='field mt-4'>
-                  <label>
+                <div className='field d-flex align-items-center'>
+                  <label className='d-flex align-items-center mb-0'>
                     <input type="checkbox" name="agree" required />
-                    Saya setuju dengan syarat dan ketentuan
+                    <p className='px-1 mb-0'>Saya setuju dengan syarat dan ketentuan</p>
                   </label>
                 </div>
                 <div className='field mt-5'>
