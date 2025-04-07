@@ -1,11 +1,4 @@
 import express from 'express';
-import Anak from './models/Anak-anak.js';
-import Pria from './models/Pria.js';
-import Wanita from './models/Wanita.js';
-import Lokals from './models/Lokal.js';
-import Best from './models/Best.js';
-import Terbarus from './models/Terbarus.js';
-import Keranjangs from './models/Keranjangs.js'
 import dotenv from "dotenv";
 dotenv.config();
 import cors from "cors"
@@ -27,7 +20,6 @@ const port = process.env.PORT || 8001;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
 app.use(routers);
 
 app.use(cors({
