@@ -1,4 +1,4 @@
-import Lokal from '../models/lokal.js';
+import Lokal from '../models/LokalBrand.js';
 
 export const getProducts = async (req, res) => {
   try {
