@@ -1,0 +1,12 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/github.com/alvinlo221110546/footwear-heaven:$COMMIT_SHA'
+      - '-f'
+      - 'Dockerfile'
+      - '.'
+    dir: 'backend' 
+images:
+  - 'gcr.io/$PROJECT_ID/github.com/alvinlo221110546/footwear-heaven:$COMMIT_SHA'
